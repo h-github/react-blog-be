@@ -5,7 +5,10 @@
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc",
-    "prestart": "npm run build",
+    "clean": "npx rimraf dist",
+    "mkdir": "npx mkdirp dist/build/static/js && npx mkdirp dist/build/static/css",
+    "copy": "copy \"src/build\" \"dist/build\" && copy \"src/build/static/js\" \"dist/build/static/js\" && copy \"src/build/static/css\" \"dist/build/static/css\"",
+    "prestart": "npm run clean && npm run build && npm run mkdir && npm run copy",
     "start": "node .",
     "dev": "ts-node-dev src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"

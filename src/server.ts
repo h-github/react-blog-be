@@ -102,6 +102,7 @@ app.post(
 app.get("*", (req: express.Request, res: express.Response) => {
   res.sendFile(path.join(__dirname, "/build/index.html"));
 });
+
 app.listen(port, () =>
   // tslint:disable-next-line: no-console
   console.log(`Server is listening to: http://localhost:${port}`)

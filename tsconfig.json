@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "module": "commonjs",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -9,11 +11,12 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
+    "rootDir": "src",
     "baseUrl": ".",
     "paths": {
       "*": ["node_modules/*"]
     }
   },
-  "include": ["src/**/*", "src/build/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
