@@ -1,12 +1,14 @@
 import express from "express";
 import { MongoClient, Db } from "mongodb";
-
+import path from "path";
 import Comment from "./models/Comment";
 import Article from "./models/Article";
 
 const app = express();
 const port = process.env.PORT || 8080;
 const CONNECTION_STR = "mongodb://localhost:27017/";
+
+app.use(express.static(path.join(__dirname, "/build")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -97,6 +99,9 @@ app.post(
   }
 );
 
+app.get("*", (req: express.Request, res: express.Response) => {
+  res.sendFile(path.join(__dirname, "/build/index.html"));
+});
 app.listen(port, () =>
   // tslint:disable-next-line: no-console
   console.log(`Server is listening to: http://localhost:${port}`)
